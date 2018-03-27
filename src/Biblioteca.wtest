@@ -1,0 +1,26 @@
+import Biblioteca.*
+test "usuarios de la biblioteca" {
+	libro.agregarUsuario(jorge)
+	libro.agregarUsuario(maria)
+	libro.agregarUsuario(laura)
+	assert.equals(#{jorge, maria, laura}, libro.usuariosRetiraron())
+}
+
+test "biblioteca debe registrar a jorge" {
+	jorge.retirarLibro()
+	jorge.retirarLibro()
+	assert.equals(#{jorge}, libro.usuariosRetiraron())
+}
+
+test "jorge retira el libro tres veces" {
+	jorge.retirarLibro()
+	jorge.retirarLibro()
+	jorge.retirarLibro()
+	assert.equals(3, jorge.cuantoLeyo())
+}
+
+test "biblioteca registra dos registros de jorge" {
+	jorge.retirarLibro()
+	jorge.retirarLibro()
+	assert.equals(2, libro.cuantoRetiro(jorge))
+}
